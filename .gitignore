@@ -1,0 +1,4 @@
+# 项目排除路径
+/consumer_8002/target/
+/entityModel/target/
+/producer_8001/target/

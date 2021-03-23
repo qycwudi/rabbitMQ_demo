@@ -1,0 +1,34 @@
+server:
+  port: 8002
+spring:
+  datasource:
+    username: root
+    password: Qycssg!0
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/db_qyc?serverTimezone=GMT%2B8&useSSL=false
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      aop-patterns: com.qyc.*
+      filters: stat,wall   #sql监控 wall 防火墙
+      stat-view-servlet:
+        enabled: true
+        login-username: admin
+        login-password: admin
+        reset-enable: false
+      web-stat-filter:
+        enabled: true
+        url-pattern: /*
+        exclusions: '*.js,*.gig,*.jpg,*.png,*.css,*.ico,/druid/*'
+      filter:
+        stat:
+          log-slow-sql: true
+          slow-sql-millis: 1000
+          enabled: true
+        wall:
+          enabled: true
+          config:
+            drop-table-allow: false
+mybatis-plus:
+  mapper-locations: classpath:static/mapper/*.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
